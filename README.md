@@ -20,4 +20,8 @@
     
           	- To ensure multiple hosts can access the project, add `"*"` to `ALLOWED_HOSTS` in `settings.py` to deploy
     
-   		-I also added a `.gitignore` file to ensure that the deployment is smooth.
+   		- I also added a `.gitignore` file to ensure that the deployment is smooth.
+   
+   2. We Created an app in the root directory named main by running the command `python manage.py startapp main`
+  
+   3. We then register the main app into the project by finding settings `settings.py` in gustisuperstore directory then finding `INSTALLED_APPS` and adding `main` to the code
