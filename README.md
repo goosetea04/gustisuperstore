@@ -2,7 +2,7 @@
 
 ## Explanation
 
-### 1. How do you implement the checklists? Explain in a step-by-step manner
+1. How do you implement the checklists? Explain in a step-by-step manner
 	1. We create a new Django project
  		- We first create a virtual environment by running the command:
 
@@ -49,4 +49,13 @@
   
    10. Deploy
   
-### 2. Create a diagram explaining the flow of client requests to a Django web app and its response. Also in the diagram, explain the connections between urls.py, views.py, models.py, and the HTML file(s).
+2. Create a diagram explaining the flow of client requests to a Django web app and its response. Also in the diagram, explain the connections between urls.py, views.py, models.py, and the HTML file(s).
+
+
+3. What is the purpose of a virtual environment? Can we create a Django web app without a virtual environment?
+
+Virtual environments help developers by providing an isolated environments between projects with each project having their own dependencies and Python version. This ensures that each app can be replicated with the required dependencies, libraries and version. It is possible to run Django without env, but this will mean that configurations will be global and this may cause problems.
+
+4. What is MVC, MVT, and MVVM? Explain the differences between them?
+
+To start, MVC is the most widely used architecture. What it does is separate the application into three main components that are **model,** **view** and **controller**.
