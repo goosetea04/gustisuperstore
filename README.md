@@ -7,7 +7,7 @@
  		- We first create a virtual environment by running the command:
 
    		`python3 -m venv env`
- 
-     		- To activate the virtual environment, we use:
-    
+
+     		-To activate the virtual environment, we use:
+
      		`env\Scripts\activate.bat`
