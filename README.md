@@ -55,7 +55,7 @@ To start, MVC is the most widely used architecture. What it does is separate the
 
 # Assignment 3
 
-1. What is the difference between POST form and GET form in Django?
+1. ### What is the difference between POST form and GET form in Django?
    
    	- In Django and other web development, the two main methods for *submitting* data are **POST** and **GET**. The difference in these methods dictates how the data is sent to the server and how it can be processed.
 
@@ -63,7 +63,7 @@ To start, MVC is the most widely used architecture. What it does is separate the
   
    	- The POST method sends for data in the body of the HTTP request. It is used to requests that modify data on the server and is used for sending larger data. Since data is not visible in the URL, it is much more secure. It does not have the same character limitations as the GET method.
    	  
-2. What are the main differences between XML, JSON, and HTML in the context of data delivery?
+2. ### What are the main differences between XML, JSON, and HTML in the context of data delivery?
 
    	Before we start, lets get to know `XML`, `JSON`, and `HTML`.
 
@@ -71,7 +71,7 @@ To start, MVC is the most widely used architecture. What it does is separate the
 
    	Only `XML` and `JSON` operates similarlyy as in they both are used in data transmission. `HTML` is used for describing and displaying data.
    	
-4. Why is JSON often used in data exchange between modern web applications?
+3. ### Why is JSON often used in data exchange between modern web applications?
 
    	JSON is most often used in data echange due to some advantages it have and conveniece it provides to users. Among them are:
 
@@ -82,5 +82,31 @@ To start, MVC is the most widely used architecture. What it does is separate the
   
    	Among many other reasons, these are just some reasons why JSON is most often used in Data Transmission.
    	  
-6. Explain how you implemented the checklist above step-by-step (not just following the tutorial).
+4. ### Explain how you implemented the checklist above step-by-step (not just following the tutorial).
+
+	1. Create a form input to add a model object to the previous app.
+    
+		-Before doing anything, I used visual studio code which is an IDE wherein I edited all of the files needed for this assignmenet.
+		- In the `root` directory, I made a folder named `templates` and made a file named `base.html`. Here, I added HTML code that serves as the base of my webpage.
+
+		- The contents of the file I got from the documentation of tutorial 2. I have a project folder named `gustisuperstore` and here, I edited the `settings.py` and edited `TEMPLATES` so that it can detect the html.
+
+		- Inside `main` folder, I edited `main.html` so that it can implemebt the basic structure.
+
+ 		-Now I will make the forms! Inside the `main` folder, I made a new file named `forms.py`
+
+
+ 	2. Add 5 views to view the added objects in HTML, XML, JSON, XML by ID, and JSON by ID formats and create the URLS for each of them
+
+		The HTML view was created in the previous step, but what about the others? For XML, I navigated back to the `views.py` file, imported the necessary components, and created a new function called `show_xml` with a `request` parameter. After that, I added a return statement to provide the response as an XML format. Moving on to the `urls.py` file, I imported this function and included it in the `urlpatterns` to ensure it is correctly routed in the URL.
+
+		I followed a similar process for handling JSON, with the only difference being the function name. As for handling ID formats, it largely mirrors the previous steps. However, I adjusted the `data` variable to retrieve information based on a specific ID using `Product.objects.filter(pk=id)`. This enables the ability to search for items using an ID address.
+
+	3. Access the five URLs in point 2 using Postman, take screenshots of the results in Postman, and add them to README.md.
+
+
+
+
+
+
    
