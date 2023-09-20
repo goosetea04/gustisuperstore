@@ -94,16 +94,29 @@ To start, MVC is the most widely used architecture. What it does is separate the
 
 		- Inside `main` folder, I edited `main.html` so that it can implemebt the basic structure.
 
- 		-Now I will make the forms! Inside the `main` folder, I made a new file named `forms.py`
+ 		- Now I will make the forms! Inside the `main` folder, I made a new file named `forms.py`
+
+		- I then imported some components that are `ModelForm` and `Product`. Product itself is called on from `models.py`.
+		- In `views.py` I imported `HttpResponseDirect`, `reverse`, `Product` and `ProductForm`. These respectively have the usages of: processing responses,  retrieving URL, implementing data, and creating the form.
+
+		- Still in `views.py,` I made a function called `create_product` that, after a form with a product, price and description is made, renders it onto the website.
+
+		- I edited the `show_main` function so that I am able to process and fetch the data.
+
+ 		- I then opened `urls.py` and imported the `create_product` function I just made! I also added it to the path in `urlpatterns`.
+
+		- In the `templates` sub directory, I created `create_product.html` that implements the `POST` method from `django` to render a table display.
+
+		- Finally, I implemented `create_product.html` so that it can be displayed on the page.
 
 
- 	2. Add 5 views to view the added objects in HTML, XML, JSON, XML by ID, and JSON by ID formats and create the URLS for each of them
+ 	3. Add 5 views to view the added objects in HTML, XML, JSON, XML by ID, and JSON by ID formats and create the URLS for each of them
 
 		The HTML view was created in the previous step, but what about the others? For XML, I navigated back to the `views.py` file, imported the necessary components, and created a new function called `show_xml` with a `request` parameter. After that, I added a return statement to provide the response as an XML format. Moving on to the `urls.py` file, I imported this function and included it in the `urlpatterns` to ensure it is correctly routed in the URL.
 
 		I followed a similar process for handling JSON, with the only difference being the function name. As for handling ID formats, it largely mirrors the previous steps. However, I adjusted the `data` variable to retrieve information based on a specific ID using `Product.objects.filter(pk=id)`. This enables the ability to search for items using an ID address.
 
-	3. Access the five URLs in point 2 using Postman, take screenshots of the results in Postman, and add them to README.md.
+	4. Access the five URLs in point 2 using Postman, take screenshots of the results in Postman, and add them to README.md.
 
 <img src="/assets/PIC 1.png">
 <img src="/assets/PIC 2.png">
