@@ -78,7 +78,7 @@ To start, MVC is the most widely used architecture. What it does is separate the
    	- JSON is **lightweight and human-readable**. Its syntax resembles the way objects are defined in JavaScript, making it intuitive for developers to understand.
    	- JSON can be **easily parsed** and generated in a huge majority of programming languages. Most languages nowadays have built-in libraries that can be installed easily. This makes it convenient for developers.
    	- The **data transfer** of JSON is more compact compared to something like XML. This means it requires less bandwidth for data transmission, which can lead to faster load times and better performance in web applications
-    	- JSON supports a **wide range of data types,** including objects, arrays, strings, numbers, booleans, and null values. This flexibility allows for complex data structures to be represented, making it suitable for a variety of data exchange scenarios.
+	- JSON supports a **wide range of data types,** including objects, arrays, strings, numbers, booleans, and null values. This flexibility allows for complex data structures to be represented, making it suitable for a variety of data exchange scenarios.
   
    	Among many other reasons, these are just some reasons why JSON is most often used in Data Transmission.
    	  
