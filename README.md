@@ -26,9 +26,9 @@
   
 	3. We then register the main app into the project by finding settings `settings.py` in gustisuperstore directory then finding `INSTALLED_APPS` and adding `main` to the code
   
-	4. We Create a new directory that is called templates within main application. We then creare `main.html` inside the directory.
+	4. We Create a new directory that is called templates within main application. We then create `main.html` inside the directory.
   
-	5. Edit the `models.py` file inside the main application to define a new model. Edit th `models.py` to include name, amount, and description in the app.
+	5. Edit the `models.py` file inside the main application to define a new model. Edit the `models.py` to include name, amount, and description in the app.
   
 	6. Create and apply model migrations.
   
@@ -38,7 +38,7 @@
 
 	7. Edit `views.py`
 
-		- Add the function `show_main` with `app`, `name`, and `class`, that is present in `main.html` that has beend modified by `{{ class }}` and `{{ name }}` on `main.html`
+		- Add the function `show_main` with `app`, `name`, and `class`, which is present in `main.html` that has beend modified by `{{ class }}` and `{{ name }}` on `main.html`
 
 	8.  Configure URL routing in `urls.py` to map the function `views.py` to URL.
 
