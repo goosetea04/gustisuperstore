@@ -61,3 +61,17 @@ Virtual environments help developers by providing an isolated environments betwe
 To start, MVC is the most widely used architecture. What it does is separate the application into three main components that are **model,** **view** and **controller**. MVT is another architecture that is a variation of MVC. One example is Django. MVVM is an architecture that is used for mobile development. It is divided into **model,** **view,** and **viewmodel**. A major difference between the three is that MVT's controller component is taken care of by the framework. MVVM handles more with graphical user interfaces. The main differentating factor between the three is the mediator component entry to the application.
 
 ---
+
+# Assignment 3
+
+1. What is the difference between POST form and GET form in Django?
+   
+   	- In Django and other web development, the two main methods for *submitting* data are **POST** and **GET**. The difference in these methods dictates how the data is sent to the server and how it can be processed.
+
+   	- The GET method appends form data to the URL as query parameters. It is used for requests that retrieve data from the server but are not really used for large amounts of data; furthermore, some data is present in the URL, so it should be used cautiously so as to not get any data in the URL. Since it is a URL, it has URL length limitations.
+  
+   	- The POST method sends for data in the body of the HTTP request. It is used to requests that modify data on the server and is used for sending larger data. Since data is not visible in the URL, it is much more secure. It does not have the same character limitations as the GET method.
+   	  
+2. What are the main differences between XML, JSON, and HTML in the context of data delivery?
+3. Why is JSON often used in data exchange between modern web applications?
+4. Explain how you implemented the checklist above step-by-step (not just following the tutorial).
