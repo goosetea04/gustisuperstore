@@ -40,4 +40,13 @@
 
 		- Add the function `show_main` with `app`, `name`, and `class`, that is present in `main.html` that has beend modified by `{{ class }}` and `{{ name }}` on `main.html`
 
-   8.  
+   8.  Configure URL routing in `urls.py` to map the function `views.py` to URL.
+
+		- Import configs
+
+   		- Add app_name = 'main' into the urls.py
+   9. Do the four git mantras (pull, add, commit, push) to push into github
+  
+   10. Deploy
+  
+### 2. Create a diagram explaining the flow of client requests to a Django web app and its response. Also in the diagram, explain the connections between urls.py, views.py, models.py, and the HTML file(s).
