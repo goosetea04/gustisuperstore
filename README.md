@@ -58,4 +58,6 @@ Virtual environments help developers by providing an isolated environments betwe
 
 4. What is MVC, MVT, and MVVM? Explain the differences between them?
 
-To start, MVC is the most widely used architecture. What it does is separate the application into three main components that are **model,** **view** and **controller**.
+To start, MVC is the most widely used architecture. What it does is separate the application into three main components that are **model,** **view** and **controller**. MVT is another architecture that is a variation of MVC. One example is Django. MVVM is an architecture that is used for mobile development. It is divided into **model,** **view,** and **viewmodel**. A major difference between the three is that MVT's controller component is taken care of by the framework. MVVM handles more with graphical user interfaces. The main differentating factor between the three is the mediator component entry to the application.
+
+---
