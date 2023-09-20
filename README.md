@@ -105,6 +105,11 @@ To start, MVC is the most widely used architecture. What it does is separate the
 
 	3. Access the five URLs in point 2 using Postman, take screenshots of the results in Postman, and add them to README.md.
 
+<img src="/assets/PIC 1.png">
+<img src="/assets/PIC 2.png">
+<img src="/assets/PIC 3.png">
+<img src="/assets/PIC 4.png">
+<img src="/assets/PIC 5.png">
 
 
 
