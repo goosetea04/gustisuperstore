@@ -1,6 +1,6 @@
-#Assignment 2
+# Assignment 2
 
-##Explanation
+## Explanation
 
 1. How do you implement the checklists? Explain in a step-by-step manner
 	1. We create a new Django project
