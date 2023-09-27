@@ -171,7 +171,8 @@ To start, MVC is the most widely used architecture. What it does is separate the
 8. Explain how you implemented the checklist above step-by-step (not just following the tutorial).
 
 	1. I first opened `views.py` inside `main` folder and imported `redirect`, `UserCreationfForm`, and `messages`. I then made a function called `register` that accepts `requests` as a parameter.
-{
+
+```py
 	def register(request):
 	form = UserCreationForm()
 
@@ -183,7 +184,7 @@ To start, MVC is the most widely used architecture. What it does is separate the
         		return redirect('main:login')
 	context = {'form':form}
 	return render(request, 'register.html', context)
-}
+```
 
 	3.  I then made a file called `register.html` inside `templates` inside `main`. After that, I added routing. 
 
