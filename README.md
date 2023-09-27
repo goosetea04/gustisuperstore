@@ -170,7 +170,7 @@ To start, MVC is the most widely used architecture. What it does is separate the
 
 8. Explain how you implemented the checklist above step-by-step (not just following the tutorial).
 
-	1. I first opened `views.py` inside `main` folder and imported `redirect`, `UserCreationfForm`, and `messages`. I then made a function called `register` that accepts `requests` as a parameter.
+1. I first opened `views.py` inside `main` folder and imported `redirect`, `UserCreationfForm`, and `messages`. I then made a function called `register` that accepts `requests` as a parameter.
 
 ```py
 	def register(request):
@@ -185,9 +185,69 @@ To start, MVC is the most widely used architecture. What it does is separate the
 	context = {'form':form}
 	return render(request, 'register.html', context)
 ```
+2.  I then made a file called `register.html` inside `templates` inside `main`. After that, I added routing.
 
-	3.  I then made a file called `register.html` inside `templates` inside `main`. After that, I added routing. 
+ ```py
+{% extends 'base.html' %}
 
+{% block meta %}
+    <title>Register</title>
+{% endblock meta %}
+
+{% block content %}  
+
+<div class = "login">
+    
+    <h1>Register</h1>  
+
+        <form method="POST" >  
+            {% csrf_token %}  
+            <table>  
+                {{ form.as_table }}  
+                <tr>  
+                    <td></td>
+                    <td><input type="submit" name="submit" value="Daftar"/></td>  
+                </tr>  
+            </table>  
+        </form>
+
+    {% if messages %}  
+        <ul>   
+            {% for message in messages %}  
+                <li>{{ message }}</li>  
+                {% endfor %}  
+        </ul>   
+    {% endif %}
+
+</div>  
+
+{% endblock content %}
+```
+3. I then made a log out function witthin `views.py` inside the `main` folder.
+4. I still made routing inside `views.py`.
+5. Don't forget to restrict acces to the main page by importing the code. `from django.contrib.auth.decorators import login_required ` and adding the code,
+```py
+	show_main: @login_required(login_url='/login')
+```
+
+6. Don't forget to modify the `login_user` function to better reflect the chqanges we made.
+7. Inside `show_main`, add the new variable `last_login` by writing `'last_login": request.COOKIES["last_login"]`
+8. Fix the `logout_user` function so that our webapp will remove cookies after user logout by writing `response.delete_cookie('last_login')`
+9. Import user that was made to `models.py`
+10. Modify `Product` to add
+```py
+	class Product(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+```
+Modify `show_main` and `create_products` function so that it connects user id qit user product
+
+### We Are Done!!!
+
+the last thing we need to do is make migrations and run our server!
+
+`python manage.py makemigrations`
+`python manage.py migrate`
+`python manage.py runserver`
 
 
 
