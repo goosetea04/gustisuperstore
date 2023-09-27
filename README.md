@@ -150,9 +150,42 @@ To start, MVC is the most widely used architecture. What it does is separate the
 	- Authentication is the process of verifying the identity of a user, system or process. It esseentially asks the question, "Who are you?" In Django, authentication involves confirming that a user is who they claim to be. This is typically done by checking their credentials, such as a username and password. Django provides a built-in authentication system that handles user authentication, including features like session management, password hashing, cookie tracking,  and user registration.
 	- Authorization is the process of determining what actions a user is allowed to perform within a system or application. It answers the question, "What are you allowed to do?" In Django, authorization involves defining permissions and access controls for different parts of the application. This can include specifying which users or groups of users have the right to view, create, edit, or delete certain resources.
 
-5. ### What are cookies in website? How does Django use cookies to manage user session data?
+	I believe that both are important due to the nature of authentication being crucial to keeping a system safe. Authentication and Authorization work in tandem to ensure the django app is secure. Authentication helps make sure that the right person can use the app, and authorization ensures that the person using the app has the right acces to potentially sensitive info.
+
+3. ### What are cookies in website? How does Django use cookies to manage user session data?
+
+	Cookies are small pieces of data that websites store on a user's browser. They are used to remember information about the user's interactions with the site. When a user visits a website, the server sends a cookie to the browser, which is then stored locally. The browser includes this cookie in subsequent requests to the same website, allowing the server to retrieve and use that information.
+
+	In Django, cookies are used for session management, where cookies are used to track session. They help the server recognize a user as they navigate through the site. They also help with personalization, authentication and remembering user choices. Essentially, if a command tracks attributes to users, then cookies would most liekly be used.
+    
 6. Are cookies secure to use? Is there potential risk to be aware of?
-7. Explain how you implemented the checklist above step-by-step (not just following the tutorial).
+
+	Cookies are a fundamental part of web browsing and are generally considered secure when used properly. However, there are potential risks and security considerations that developers and website owners should be aware of:
+
+	- There may be cookie size limitations, that when we are expanding the app, the cookie size may expand. This may cause problems in the future.
+	-  Session cookies are stored temporarily and are deleted when the user closes their browser. Persistent cookies, on the other hand, have an expiration date. Developers should carefully consider the lifespan of cookies to balance convenience and security.
+	- Avoid storing sensitive information directly in cookies. Instead, it's recommended to store references (like session IDs) and keep the actual data on the server. Even if a cookie is intercepted, the attacker won't have direct access to sensitive information.
+
+	Overall,  cookies are generally secure when used with best practices and appropriate security measures. However, developers should be aware of potential risks and take steps to mitigate them.
+
+8. Explain how you implemented the checklist above step-by-step (not just following the tutorial).
+
+	1. I first opened `views.py` inside `main` folder and imported `redirect`, `UserCreationfForm`, and `messages`. I then made a function called `register` that accepts `requests` as a parameter.
+{
+	def register(request):
+	form = UserCreationForm()
+
+	if request.method == "POST":
+		form = UserCreationForm(request.POST)
+		if form.is_valid():
+        		form.save()
+        		messages.success(request, 'Your account has been successfully created!')
+        		return redirect('main:login')
+	context = {'form':form}
+	return render(request, 'register.html', context)
+}
+
+	3.  I then made a file called `register.html` inside `templates` inside `main`. After that, I added routing. 
 
 
 
