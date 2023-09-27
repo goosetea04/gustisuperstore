@@ -124,6 +124,37 @@ To start, MVC is the most widely used architecture. What it does is separate the
 <img src="/assets/PIC 4.png">
 <img src="/assets/PIC 5.png">
 
+---
+
+# Assignment 4
+
+1. ### What is UserCreationForm in Django? Explain its advantages and disadvantages.
+   
+	In Django, UserCreationForm is a built-in form provided by the Django authentication framework that simplifies the process of creating a new user. It is designed to be used in conjunction with the Django authentication system to handle user registration and account creation. Some advantages and disadvantages include.
+
+	## Advantages
+
+	- It seamlessly integrates with Django's built-in authentication system, which includes features like password hashing, session management, and user authentication.
+	- `UserCreationForm` provides a pre-built form with fields like username, password, and confirmation, making it quick and easy to set up user registration functionality.
+	- By using `UserCreationForm`, we maintain a consistent user creation process across your application, which can enhance the user experience.
+	- `UserCreationForm` incorporates built-in security measures like password validation and password hashing, helping to ensure that user accounts are created securely.
+
+	## Disadvantages
+
+	- The default `UserCreationForm` includes basic fields like username and password. If you need to collect additional information during user registration, you'll need to extend or customize the form.
+	- For very specific or complex user registration processes, UserCreationForm might not cover all the required functionalities. In such cases, developers may need to build a custom registration form from scratch.
+	- While the form logic is provided, the styling and UI design are not. Developers will still need to implement the front-end design and style the form to fit the application's aesthetic.   
+
+2. ### What is the difference between authentication and authorization in Django application? Why are both important?
+
+	- Authentication is the process of verifying the identity of a user, system or process. It esseentially asks the question, "Who are you?" In Django, authentication involves confirming that a user is who they claim to be. This is typically done by checking their credentials, such as a username and password. Django provides a built-in authentication system that handles user authentication, including features like session management, password hashing, cookie tracking,  and user registration.
+	- Authorization is the process of determining what actions a user is allowed to perform within a system or application. It answers the question, "What are you allowed to do?" In Django, authorization involves defining permissions and access controls for different parts of the application. This can include specifying which users or groups of users have the right to view, create, edit, or delete certain resources.
+
+5. ### What are cookies in website? How does Django use cookies to manage user session data?
+6. Are cookies secure to use? Is there potential risk to be aware of?
+7. Explain how you implemented the checklist above step-by-step (not just following the tutorial).
+
+
 
 
 
