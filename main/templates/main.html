@@ -18,6 +18,21 @@
                 <td>{{product.price}}</td>
                 <td>{{product.description}}</td>
                 <td>{{product.date_added}}</td>
+
+                <td>
+                    {% if product.pk %}
+                    <a href="{% url 'main:edit_product' product.pk %}">
+                        <button>
+                            Edit
+                        </button>
+                    </a>
+                    {% endif %}
+                    <a href="{% url 'main:delete_product' product.pk %}">
+                          <button>
+                              Delete
+                          </button>
+                      </a>
+                </td>
             </tr>
         {% endfor %}
     </table>
@@ -38,5 +53,4 @@
             Logout
         </button>
     </a>
-
 {% endblock content %}
