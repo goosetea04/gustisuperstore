@@ -269,9 +269,28 @@ the last thing we need to do is make migrations and run our server!
 	```py
  	p {
 		font-size: 16px;
-    		color: #333;
+		color: #333;
 	}
 	```
+
+3. Class Selector (.classname):
+	- We use it to select elements with a specific attribute. We use it when we want to change the design of elements that share a common class.
+	``` py
+ 	.highlight {
+    		background-color: yellow;
+	}
+ 	```
+
+## Explain some of the HTML5 tags that you know.
+
+1. ### '<header>':
+	This tag is used to define the header in the webpage. The header typically includes navigation, titles and introductory elements to the user of a webpage.
+2. ### '<nav>':
+	This tag contains navigation links for a document. It's used to define the navigation menu, which typically includes links to different sections or pages of a website.
+3. ### '<section>':
+	Defines a thematic grouping within a document. It's used to organize content into distinct sections, each with its own heading.
+4. ### '<footer>':
+	Defines a footer section for a document or a section within a document. It typically contains information about the author, copyright, and links to related documents.
 
 
 
