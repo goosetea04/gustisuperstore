@@ -316,8 +316,4 @@ As for when to use Tailwind and Bootstrap:
 
 - We use Bootstrap when we want to quuickly build a Django webapp that comes equipped with pre-designed components. We also use Bootstrap when we prefer a modular, component-based approach to development. Lastly, we use Bootstrap when we are prioritizing speed as the most important factor of development.
 
-### Explain how you implemented the checklist above step-by-step (not just following the tutorial).
-
-
-
-   
+## Explain how you implemented the checklist above step-by-step (not just following the tutorial).
