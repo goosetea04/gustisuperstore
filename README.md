@@ -226,6 +226,7 @@ To start, MVC is the most widely used architecture. What it does is separate the
 3. I then made a log out function witthin `views.py` inside the `main` folder.
 4. I still made routing inside `views.py`.
 5. Don't forget to restrict acces to the main page by importing the code. `from django.contrib.auth.decorators import login_required ` and adding the code,
+   
 ```py
 	show_main: @login_required(login_url='/login')
 ```
@@ -248,6 +249,32 @@ the last thing we need to do is make migrations and run our server!
 `python manage.py makemigrations`
 `python manage.py migrate`
 `python manage.py runserver`
+
+---
+# Assignment 5
+
+## Explain the purpose of some CSS element selector and when to use it.
+
+1. Universal Selector (*):
+	- What it does is select all elements on a page. It is, however, rarely used on its own, and it is mostly used in or helps with global changes or resets.
+	``` py
+ 	* {
+	    margin: 0;
+	    padding: 0;
+	}
+	```
+
+2. Tag Selector (div) (p) (h1):
+	- We use this when we want to select HTML elements based on their tag name i.e: div, p, h1. We use it when we want to apply a style to all instances of a particular HTML element.
+	```py
+ 	p {
+		font-size: 16px;
+    		color: #333;
+	}
+	```
+
+
+
 
 
 
