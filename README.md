@@ -283,19 +283,40 @@ the last thing we need to do is make migrations and run our server!
 
 ## Explain some of the HTML5 tags that you know.
 
-1. ### <header>:
+1. ### header:
 	This tag is used to define the header in the webpage. The header typically includes navigation, titles and introductory elements to the user of a webpage.
-2. ### <nav>:
+2. ### nav:
 	This tag contains navigation links for a document. It's used to define the navigation menu, which typically includes links to different sections or pages of a website.
-3. ### <section>:
+3. ### section:
 	Defines a thematic grouping within a document. It's used to organize content into distinct sections, each with its own heading.
-4. ### <footer>:
+4. ### footer:
 	Defines a footer section for a document or a section within a document. It typically contains information about the author, copyright, and links to related documents.
 
+## What are the differences between margin and padding?
 
+Margin and padding are two fundamental concepts in CSS (Cascading Style Sheets) that control the spacing and layout of elements on a web page. They serve different purposes and are applied in distinct ways -> Margin is the space outside an element, controlling its positioning in relation to other elements, while padding is the space inside an element, influencing the distance between its content and border.
 
+- Margin is the space outside of an element, usually found between its border and adjacent elements. This controls the gap between elements. The margin also creates an "invisible" area around the element which cannot be used for content or background. Sometimes margins can also have a negative value meaning that they can overlap elements.
 
+- On the other hand, Padding is the space **_inside_** an element. This means the space between its content and its border. It controls the space around the content within an element. We can think of padding as a designated area within an element where we can place content. padding cannot have negative values like margins do.
 
+## What are the differences between the CSS framework Tailwind and Bootstrap? When should we use Bootstrap rather than Tailwind, and vice versa?
+
+### Some key differences between Tailwind and Bootstrap include:
+
+- Tailwind follows a utility-first approach where you build components  by applying small utility classes directly in your HTML. It provides a wide range of low-level utility classes that you can combine to create custom designs. On the other hand, Bootstrap offers a component-based approach, providing pre-designed, styled-components that you can use in your project. It encourages consistency through its predefined component library.
+
+- Tailwind is highly customizable, allowing you to build designs from the ground up with utility classes and configure the framework to suit your specific needs. Bootstrap offers some level of customization through Sass variables, but it's primarily designed to be used as a complete package.
+
+- Tailwind contains a vast set of utility classes hence making it generally have a larger file size. Bootstrap Provides a comprehensive set of components, which can lead to a larger initial file size, but you have the option to customize and only include the components you use, making the file size smaller.
+
+As for when to use Tailwind and Bootstrap:
+
+- We use Tailwind when we prefer a utility-first approach and control over our design or someone who wants to build a highly-customized and unique design.
+
+- We use Bootstrap when we want to quuickly build a Django webapp that comes equipped with pre-designed components. We also use Bootstrap when we prefer a modular, component-based approach to development. Lastly, we use Bootstrap when we are prioritizing speed as the most important factor of development.
+
+### Explain how you implemented the checklist above step-by-step (not just following the tutorial).
 
 
 
