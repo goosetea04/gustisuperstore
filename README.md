@@ -283,13 +283,13 @@ the last thing we need to do is make migrations and run our server!
 
 ## Explain some of the HTML5 tags that you know.
 
-1. ### '<header>':
+1. ### <header>:
 	This tag is used to define the header in the webpage. The header typically includes navigation, titles and introductory elements to the user of a webpage.
-2. ### '<nav>':
+2. ### <nav>:
 	This tag contains navigation links for a document. It's used to define the navigation menu, which typically includes links to different sections or pages of a website.
-3. ### '<section>':
+3. ### <section>:
 	Defines a thematic grouping within a document. It's used to organize content into distinct sections, each with its own heading.
-4. ### '<footer>':
+4. ### <footer>:
 	Defines a footer section for a document or a section within a document. It typically contains information about the author, copyright, and links to related documents.
 
 
