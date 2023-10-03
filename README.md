@@ -312,8 +312,97 @@ Margin and padding are two fundamental concepts in CSS (Cascading Style Sheets) 
 
 As for when to use Tailwind and Bootstrap:
 
-- We use Tailwind when we prefer a utility-first approach and control over our design or someone who wants to build a highly-customized and unique design.
+- We use Tailwind when we prefer a utility-first approach and control over our design or when someone who wants to build a highly customized and unique design.
 
-- We use Bootstrap when we want to quuickly build a Django webapp that comes equipped with pre-designed components. We also use Bootstrap when we prefer a modular, component-based approach to development. Lastly, we use Bootstrap when we are prioritizing speed as the most important factor of development.
+- We use Bootstrap when we want to quickly build a Django webapp that comes equipped with pre-designed components. We also use Bootstrap when we prefer a modular, component-based approach to development. Lastly, we use Bootstrap when we are prioritizing speed as the most important factor of development.
 
 ## Explain how you implemented the checklist above step-by-step (not just following the tutorial).
+
+### Installing Bootstrap
+1. Inside `base.html`, I added `<meta name="viewport">` that will ensure that the page will be responsive tp the size of mobile devices.
+2. I also added bootstrap alongside CSS and JS support by adding the following code to `base.html`
+``` py
+<head>
+    {% block meta %}
+        ...
+    {% endblock meta %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+J4jsl5c9zdLKaUk5Ae5f5b1bw6AUn5f5v8FZJoMxm6f5cH1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</head>
+```
+### Continuing the app
+
+I then added a navbar to my main by using the tags <nav> and </nav> respectfully. I had problems fitting buttons on my navbar, however, I believe that it completed the requirements needed.
+
+### Adding edit_product
+
+I made the following function on views.py:
+
+```py
+def edit_product(request, id):
+    # Get product by ID
+    product = Product.objects.get(pk = id)
+
+    # Set product as instance of form
+    form = ProductForm(request.POST or None, instance=product)
+
+    if form.is_valid() and request.method == "POST":
+        # Save the form and return to home page
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_product.html", context)
+```
+Then, I made an HTML file named edit_product.html in main/templates and added the following code. This just ensures that we can edit the propoerties of already-existing products.
+```py
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h1>Edit Product</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Edit Product"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+{% endblock %}
+```
+Don't forget to later add the proper import function to urls.py
+
+```py
+from main.views import edit_product
+```
+I then also added the correct path url to `urlpatterns`: 
+
+```py
+path('edit-product/<int:id>', edit_product, name='edit_product'),
+```
+On the table, I added the corresponding button to direct to the edit_product function made,
+```py
+<tr>
+    ...
+    <td>
+        <a href="{% url 'main:edit_product' product.pk %}">
+            <button>
+                Edit
+            </button>
+        </a>
+    </td>
+</tr>
+```
+
+
