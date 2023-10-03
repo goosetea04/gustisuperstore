@@ -1,15 +1,170 @@
 {% extends 'base.html' %}
 
-{% block content %}
-    <h1>Welcome to Gusti's Super Store</h1>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Date Added</th>
-        </tr>
+{% block meta %}
+    {% load static %}
+    <title>Main Page</title>
+{% endblock meta %}
 
+{% block content %}
+<style>
+
+    body {
+        font-family: "Trebuchet MS", Arial, sans-serif;
+        background-color: #DAFFFB;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .container {
+        max-width: 1400px;
+        margin: 20px auto;
+        padding: 40px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .product {
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin: 20px;
+        text-align: center;
+        background-color: #fff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+
+    .product img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .product h3 {
+        font-size: 24px;
+        color: #333; 
+    }
+
+    .product h1 {
+        font-size: 36px;
+        color: #333; 
+        margin-bottom: 20px;
+        margin-left: 0px;
+    }
+
+    .product p {
+        font-size: 18px;
+        color: #777;
+    }
+
+   
+    .btn {
+        background-color: #333;
+        color: #fff;
+        padding: 5px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-size: 15px;
+    }
+
+    .btn:hover {
+        background-color: #555; 
+    }
+
+   
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+        color: #333;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        color: #555;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    
+    table button {
+        background-color: #333;
+        color: #fff;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-size: 14px;
+    }
+
+    table button:hover {
+        background-color: #555;
+    }
+
+    footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    
+    .label-value {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    
+    .label-value h5 {
+        margin-right: 10px;
+    }
+    
+</style>
+
+<div class="container">
+
+      
+
+    <h1 style="font-size: 28px; font-weight: bold; text-transform: uppercase; color: #000000; margin-bottom: 20px; margin-left: 0px; justify-content: center; align-items: center;"> Welcome to Gusti's Super Store </h1>
+    
+    
+    <p style="font-size: 20px;"> Let us know what you want from our shop! </p>
+
+    <table class="table table-light table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Date Added</th>
+                <th>Edit / Delete ?</th>
+            </tr>
+        </thead>
         {% comment %} Below is how to show the product data {% endcomment %}
 
         {% for product in products %}
@@ -22,13 +177,13 @@
                 <td>
                     {% if product.pk %}
                     <a href="{% url 'main:edit_product' product.pk %}">
-                        <button>
+                        <button type="button" class="btn btn-primary btn-sm" fdprocessedid="zw3tlc" style="color: #FFFFFF; background-color:#64CCC5">
                             Edit
                         </button>
                     </a>
                     {% endif %}
                     <a href="{% url 'main:delete_product' product.pk %}">
-                          <button>
+                        <button type="button" class="btn btn-primary btn-sm" fdprocessedid="zw3tlc" style="color: #FFFFFF; background-color:#64CCC5">
                               Delete
                           </button>
                       </a>
@@ -39,18 +194,31 @@
 
     <br />
 
-    
-    <a href="{% url 'main:create_product' %}">
-        <button>
-            Add New Product
-        </button>
-    </a>
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="row">
+            <div class="col">
+                <a href="{% url 'main:create_product' %}">
+                    <button type="button" style="width: 150px; height: 50px; color: #FFFFFF; background-color: #64CCC5" class="btn btn-primary" fdprocessedid="34hqy">
+                        Add Product
+                    </button>
+                </a>
+            </div>
+            <div class="col">
+                <a href="{% url 'main:logout' %}">
+                    <button type="button" style="width: 150px; height: 50px; color: #FFFFFF; background-color: #64CCC5" class="btn btn-primary" fdprocessedid="34hqy">
+                        Logout
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
 
-    <h5>Last login session: {{ last_login }}</h5>
+    <p style="font-size: 14px; text-align: center;">Last login session: {{ last_login }}</p>
     
-    <a href="{% url 'main:logout' %}">
-        <button>
-            Logout
-        </button>
-    </a>
+    
+
+    
+    
+    
+
 {% endblock content %}
