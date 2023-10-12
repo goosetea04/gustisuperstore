@@ -106,6 +106,7 @@
         background-color: #f2f2f2;
     }
 
+    tr:hover {background-color: coral;}
     
     table button {
         background-color: #333;
@@ -147,6 +148,10 @@
     .last-row {
         background-color: #64CCC5; /* Change this to the color you want */
     }
+
+    tr:last-child {
+        background-color: #64CCC5;
+    }
     
 </style>
 
@@ -168,7 +173,7 @@
     
     <p style="font-size: 20px;"> Let us know what you want from our shop! </p>
 
-    <table class="table table-light table-striped">
+    {%comment%} <table class="table table-light">
         <thead class="thead-dark">
             <tr>
                 <th>Name</th>
@@ -178,8 +183,7 @@
                 <th>Edit / Delete ?</th>
             </tr>
         </thead>
-        {% comment %} Below is how to show the product data {% endcomment %}
-        
+        {% comment %} Below is how to show the product data 
         {% with total_rows=products|length %}
         {% for product in products %}
             <tr {% if forloop.counter == total_rows %} class="table-info"{% endif %}>
@@ -205,9 +209,44 @@
             </tr>
         {% endfor %}
         {% endwith %}
-    </table>
+        
+    </table> {% endcomment %}
 
     <br />
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form" onsubmit="return false;">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="col-form-label">Price:</label>
+                            <input type="number" class="form-control" id="price" name="price"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="col-form-label">Description:</label>
+                            <textarea class="form-control" id="description" name="description"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table id="product_table"></table>
 
     <div class="container d-flex justify-content-center align-items-center">
         <div class="row">
@@ -225,15 +264,68 @@
                     </button>
                 </a>
             </div>
+            <div class="col">
+                    <button type="button" style="width: 150px; height: 50px; color: #FFFFFF; background-color: #64CCC5" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Add Product by AJAX
+                    </button>
+            </div>
         </div>
     </div>
 
+
     <p style="font-size: 14px; text-align: center;">Last login session: {{ last_login }}</p>
-    
-    
 
+    <script>
+        async function getProducts() {
+            return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+        }
     
+        async function refreshProducts() {
+            document.getElementById("product_table").innerHTML = ""
+            const products = await getProducts()
+            let htmlString = `<tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Date Added</th>
+                <th> Delete? </th>
+            </tr>`
+            products.forEach((item) => {
+                htmlString += `\n<tr>
+                <td>${item.fields.name}</td>
+                <td>${item.fields.price}</td>
+                <td>${item.fields.description}</td>
+                <td>${item.fields.date_added}</td>
+                <td> <button style="width: 150px; height: 50px; color: #FFFFFF; background-color: red" class="btn btn-danger" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" onclick="deleteProduct(${item.pk})">
+                    Delete
+                </button> </td>
+            </tr>` 
+            })
+            
+            document.getElementById("product_table").innerHTML = htmlString
+        }
     
+        refreshProducts()
     
+        function addProduct() {
+            fetch("{% url 'main:add_product_ajax' %}", {
+                method: "POST",
+                body: new FormData(document.querySelector('#form'))
+            }).then(refreshProducts)
+    
+            document.getElementById("form").reset()
+            return false
+        }
+    
+        document.getElementById("button_add").onclick = addProduct
 
+        function deleteProduct(id) {
+            fetch("delete-product-ajax/" + id, {
+              method: "POST"
+            }).then(refreshProducts)
+      
+            document.getElementById("form").reset()
+            return false
+          }
+    </script>
 {% endblock content %}
