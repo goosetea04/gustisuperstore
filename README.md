@@ -535,6 +535,7 @@ path('create-product-ajax/', add_product_ajax, name='add_product_ajax')
 ```
 
 7.We then add the button, `<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product by AJAX</button>` that will refer to the modal.
+
 8. We then add the script to the script tag that will be responsible for adding products.
 ``` py
 function addProduct() {
@@ -549,6 +550,43 @@ function addProduct() {
 ```
 
 ### Adding Delete Button
+
+1. In `views.py`, we add the following code to delete products.
+
+``` py
+@csrf_exempt
+def delete_product_ajax(request, id):
+    product = Product.objects.get(pk=id)
+    product.delete()
+    return HttpResponse(b"DELETED", status=201)
+```
+
+2. We then add this in `urls.py`
+
+``` py
+path('delete-product-ajax/<int:id>', delete_product_ajax, name='delete_product_ajax'),
+```
+
+3. We will then add the following lines of code to the script of <script>
+```py
+function deleteProduct(id) {
+            fetch("delete-product-ajax/" + id, {
+              method: "POST"
+            }).then(refreshProducts)
+      
+            document.getElementById("form").reset()
+            return false
+          }
+```
+
+4. Consequently, we will now add the following button that will link to deleting products onto our table.
+
+``` py
+<button style="width: 150px; height: 50px; color: #FFFFFF; background-color: red" class="btn btn-danger" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" onclick="deleteProduct(${item.pk})">
+                    Delete
+                </button>
+```
+
 
 
 
