@@ -123,9 +123,11 @@ def add_product_ajax(request):
         name = request.POST.get("name")
         price = request.POST.get("price")
         description = request.POST.get("description")
+        is_discount = request.POST.get("is_discount")
         user = request.user
+        
 
-        new_product = Product(name=name, price=price, description=description, user=user)
+        new_product = Product(name=name, price=price, description=description, user=user, is_discount=is_discount)
         new_product.save()
 
         return HttpResponse(b"CREATED", status=201)
@@ -136,4 +138,4 @@ def add_product_ajax(request):
 def delete_product_ajax(request, id):
     product = Product.objects.get(pk=id)
     product.delete()
-    return HttpResponse(b"DELETED", status=201)
+    return HttpResponse(b"DELETED", status=200)
