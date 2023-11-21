@@ -136,4 +136,4 @@ def add_product_ajax(request):
 def delete_product_ajax(request, id):
     product = Product.objects.get(pk=id)
     product.delete()
-    return HttpResponse(b"DELETED", status=201)
+    return HttpResponse(b"DELETED", status=200)
