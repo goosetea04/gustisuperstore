@@ -123,7 +123,7 @@ def add_product_ajax(request):
         name = request.POST.get("name")
         price = request.POST.get("price")
         description = request.POST.get("description")
-        is_discount = request.POST.get("is_discount")
+        is_discount = request.POST.get("is_discount", True)
         user = request.user
         
 

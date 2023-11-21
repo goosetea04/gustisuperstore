@@ -8,4 +8,4 @@ class Product(models.Model):
     description = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     newItem = models.BooleanField(default=True)
-    is_discount=models.BooleanField(default=True)
+    is_discount=models.BooleanField(default=True, null=True)
