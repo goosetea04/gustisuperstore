@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'main',
+    'tailwind',
     'gustisuperstoretailwind',
     'django_browser_reload',
     'django.contrib.staticfiles',
